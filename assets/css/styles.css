@@ -267,3 +267,35 @@ address { font-style: normal; }
   .footer-grid { grid-template-columns: 1.4fr 1.2fr 1fr 1fr; }
 }
 @media (max-width: 62rem) and (min-width: 56rem) { .tool-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
+
+/* ---------- Passe 3 : torche & animations ---------- */
+/* Voile noir percé par un halo : seulement avec JS et hors mode clair */
+.torche { position: fixed; inset: 0; z-index: 40; pointer-events: none; display: none;
+  --tx: 50vw; --ty: 40vh; --tr: 240px;
+  background:
+    radial-gradient(circle at var(--tx) var(--ty), rgba(255, 179, 71, .1) 0, rgba(255, 150, 50, .045) calc(var(--tr) * .55), transparent calc(var(--tr) * 1.05)),
+    radial-gradient(circle at var(--tx) var(--ty), transparent 0, transparent calc(var(--tr) * .2), rgba(7, 6, 10, .5) calc(var(--tr) * .55), rgba(7, 6, 10, .8) calc(var(--tr) * .8), rgba(7, 6, 10, .955) var(--tr)); }
+html.js:not(.lumiere) .torche { display: block; }
+.torche-hint { position: fixed; left: 50%; bottom: 1.5rem; z-index: 55; translate: -50% 0; max-width: calc(100% - 2rem); padding: .65rem 1.2rem; background: var(--bg-3); color: var(--fg); border: 1px solid var(--line); border-radius: 999px; font-size: .85rem; text-align: center; transition: opacity .8s, translate .8s; }
+.torche-hint.gone { opacity: 0; translate: -50% 10px; pointer-events: none; }
+html.lumiere .torche-hint { display: none; }
+body { transition: background-color .6s, color .6s; }
+
+/* Mise au point : le contenu surgit du flou */
+html.js [data-reveal] { opacity: 0; filter: blur(8px); transform: translateY(14px); transition: opacity .9s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms), filter .9s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms), transform .9s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms); }
+html.js [data-reveal].is-in { opacity: 1; filter: none; transform: none; }
+
+.halo-rings i { animation: souffle 9s ease-in-out infinite; }
+.halo-rings i:nth-child(2) { animation-delay: -3s; } .halo-rings i:nth-child(3) { animation-delay: -6s; }
+@keyframes souffle { 0%, 100% { scale: 1; } 50% { scale: 1.05; } }
+.scroll-cue::after { content: ""; position: absolute; left: -2px; top: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); animation: goutte 2.4s ease-in infinite; }
+@keyframes goutte { 0% { translate: 0 0; opacity: 0; } 20% { opacity: 1; } 100% { translate: 0 2.8rem; opacity: 0; } }
+.dish { transition: border-color .4s, transform .4s; } .dish:hover { border-color: var(--accent); transform: translateY(-3px); }
+.dish-art { transition: rotate .8s cubic-bezier(.2, .7, .2, 1); } .dish:hover .dish-art { rotate: 8deg; }
+.btn:active { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0ms !important; }
+  html.js [data-reveal] { filter: none; transform: none; }
+}
