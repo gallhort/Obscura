@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réserver une table · Maison Obscura</title>
+<meta name="description" content="Réservez votre dîner dans le noir chez Maison Obscura : choisissez la date, le service, la formule et indiquez vos allergies.">
+<meta name="theme-color" content="#07060a">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Maison Obscura">
+<meta property="og:title" content="Réserver une table · Maison Obscura">
+<meta property="og:description" content="Réservez votre dîner dans le noir chez Maison Obscura : choisissez la date, le service, la formule et indiquez vos allergies.">
+<meta property="og:url" content="https://maison-obscura.example/reservation.html">
+<meta property="og:image" content="assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('obscura-lumiere')==='1')d.classList.add('lumiere');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html" aria-label="Maison Obscura, accueil"><svg class="brand-mark" viewBox="0 0 28 28" width="28" height="28" aria-hidden="true" focusable="false"><circle cx="14" cy="15" r="12" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/><path d="M14 4c4 6 7 8 7 13a7 7 0 0 1-14 0c0-5 3-7 7-13Z" fill="currentColor"/></svg><span>Maison <em>Obscura</em></span></a>
+    <nav id="menu-principal" class="nav" aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="menu.html">Menu dégustation</a></li><li><a href="experience.html">L’expérience</a></li><li><a href="reservation.html" aria-current="page">Réservation</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+    <div class="tools">
+      <button type="button" class="tool" id="btn-son"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4Z"/><path class="son-on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/><path class="son-off" d="M16 9.5l5 5M21 9.5l-5 5"/></svg><span class="tool-label" data-on="Couper l’ambiance sonore" data-off="Activer l’ambiance sonore">Activer l’ambiance sonore</span></button>
+      <button type="button" class="tool tool-light" id="btn-lumiere"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></svg><span class="tool-label" data-on="Éteindre la lumière" data-off="Allumer la lumière">Allumer la lumière</span></button>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="menu-principal"><span class="vh">Menu</span><span class="burger" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+
+<section class="page-hero" aria-labelledby="titre-page">
+  <div class="container narrow">
+    <p class="kicker" data-reveal>Réservation</p>
+    <h1 id="titre-page" data-reveal style="--d:100ms">Réserver <em>une table</em></h1>
+    <p class="lead" data-reveal style="--d:200ms">Dites-nous quand vous souhaitez venir, nous gardons votre place dans le noir. Tables de 1 à 8 personnes. Pour un groupe plus grand, <a href="contact.html">contactez-nous</a>.</p>
+  </div>
+</section>
+
+<section class="section tight" aria-label="Formulaire de réservation">
+  <div class="container resa">
+    <div id="resa-panel" data-reveal>
+      <form id="form-resa" class="form" action="#" method="post" novalidate data-form="resa">
+        <div class="form-summary" id="resa-summary" role="alert" tabindex="-1" hidden></div>
+
+        <fieldset class="field-group">
+          <legend>1. Quand ?</legend>
+          <div class="row">
+            <div class="field">
+              <label for="date">Date <span class="req" aria-hidden="true">*</span></label>
+              <input type="date" id="date" name="date" required aria-describedby="date-aide date-err">
+              <p class="hint" id="date-aide">Du mardi au samedi, jusqu’à trois mois à l’avance.</p>
+              <p class="err" id="date-err" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="convives">Convives <span class="req" aria-hidden="true">*</span></label>
+              <select id="convives" name="convives" required aria-describedby="convives-err">
+                <option value="">Choisir</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
+              </select>
+              <p class="err" id="convives-err" aria-live="polite"></p>
+            </div>
+          </div>
+          <fieldset class="choice-set" aria-describedby="service-err">
+            <legend>Service <span class="req" aria-hidden="true">*</span></legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="service" value="19 h 00" required><span><strong>19 h 00</strong><small>Premier service</small></span></label>
+              <label class="choice"><input type="radio" name="service" value="21 h 30" required><span><strong>21 h 30</strong><small>Second service</small></span></label>
+            </div>
+            <p class="err" id="service-err" aria-live="polite"></p>
+          </fieldset>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>2. Quelle formule ?</legend>
+          <fieldset class="choice-set" aria-describedby="formule-err">
+            <legend class="vh">Formule <span class="req" aria-hidden="true">*</span></legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="formule" value="Dégustation" data-prix="128" required><span><strong>Dégustation</strong><small>128 € / pers.</small></span></label>
+              <label class="choice"><input type="radio" name="formule" value="Dégustation &amp; accords" data-prix="190" required><span><strong>Dégustation &amp; accords</strong><small>190 € / pers.</small></span></label>
+              <label class="choice"><input type="radio" name="formule" value="Végétal" data-prix="118" required><span><strong>Végétal</strong><small>118 € / pers.</small></span></label>
+            </div>
+            <p class="err" id="formule-err" aria-live="polite"></p>
+          </fieldset>
+          <p class="estimate" id="estimation" aria-live="polite">Choisissez une formule et un nombre de convives pour voir l’estimation.</p>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>3. Qui êtes-vous ?</legend>
+          <div class="row">
+            <div class="field">
+              <label for="prenom">Prénom <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="prenom" name="prenom" autocomplete="given-name" required aria-describedby="prenom-err">
+              <p class="err" id="prenom-err" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="nom">Nom <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="nom" name="nom" autocomplete="family-name" required aria-describedby="nom-err">
+              <p class="err" id="nom-err" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="email">E-mail <span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-err">
+              <p class="err" id="email-err" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="tel">Téléphone <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" required aria-describedby="tel-aide tel-err">
+              <p class="hint" id="tel-aide">Pour vous joindre en cas d’imprévu.</p>
+              <p class="err" id="tel-err" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="allergies">Allergies, intolérances, aversions</label>
+            <textarea id="allergies" name="allergies" rows="3" maxlength="400" aria-describedby="allergies-aide"></textarea>
+            <p class="hint" id="allergies-aide">Facultatif, mais précieux pour le chef. Une occasion à fêter ? Dites-le-nous aussi.</p>
+          </div>
+        </fieldset>
+
+        <div class="field consent">
+          <label class="check"><input type="checkbox" id="accord" name="accord" required aria-describedby="accord-err"><span>Je comprends que le dîner se déroule dans l’obscurité totale et que téléphones et montres lumineuses sont déposés au vestiaire. <span class="req" aria-hidden="true">*</span></span></label>
+          <p class="err" id="accord-err" aria-live="polite"></p>
+        </div>
+
+        <p class="actions"><button type="submit" class="btn">Confirmer la demande</button></p>
+        <p class="hint">* Champs obligatoires. Site de démonstration : rien n’est envoyé ni enregistré.</p>
+      </form>
+
+      <div id="resa-ok" class="confirm" tabindex="-1" hidden>
+        <p class="kicker">Demande enregistrée</p>
+        <h2>À très bientôt, <span data-out="prenom"></span></h2>
+        <p>Votre table est réservée, sous réserve de confirmation par e-mail. Votre référence : <strong data-out="ref"></strong>.</p>
+        <dl class="recap">
+          <div><dt>Date</dt><dd data-out="date"></dd></div>
+          <div><dt>Service</dt><dd data-out="service"></dd></div>
+          <div><dt>Convives</dt><dd data-out="convives"></dd></div>
+          <div><dt>Formule</dt><dd data-out="formule"></dd></div>
+          <div><dt>Estimation</dt><dd data-out="total"></dd></div>
+        </dl>
+        <p class="muted">Démonstration : aucune donnée n’a quitté votre navigateur.</p>
+        <p class="actions"><a class="btn btn-ghost" href="index.html">Retour à l’accueil</a><button type="button" class="btn btn-ghost" id="resa-reset">Nouvelle demande</button></p>
+      </div>
+    </div>
+
+    <aside class="resa-aside" data-reveal style="--d:120ms" aria-labelledby="titre-infos">
+      <h2 id="titre-infos">Bon à savoir</h2>
+      <ul class="plain">
+        <li>Arrivez 20 minutes avant votre service pour l’accueil au bar.</li>
+        <li>Annulation gratuite jusqu’à 48 h avant.</li>
+        <li>Enfants admis à partir de 12 ans.</li>
+        <li>Une question ? <a href="tel:+33184600000">01 84 60 00 00</a>, du mardi au samedi dès 14 h.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div data-reveal>
+      <p class="brand brand-foot"><svg class="brand-mark" viewBox="0 0 28 28" width="28" height="28" aria-hidden="true" focusable="false"><circle cx="14" cy="15" r="12" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/><path d="M14 4c4 6 7 8 7 13a7 7 0 0 1-14 0c0-5 3-7 7-13Z" fill="currentColor"/></svg><span>Maison <em>Obscura</em></span></p>
+      <p class="muted">Restaurant gastronomique dans l’obscurité totale.<br>28 couverts, 5 services, aucune lumière.</p>
+    </div>
+    <div data-reveal style="--d:80ms">
+      <h2 class="foot-title">Adresse</h2>
+      <address>14 passage des Lampistes<br>75011 Paris<br><a href="tel:+33184600000">01 84 60 00 00</a><br><a href="mailto:bonsoir@maison-obscura.example">bonsoir@maison-obscura.example</a></address>
+    </div>
+    <div data-reveal style="--d:160ms">
+      <h2 class="foot-title">Horaires</h2>
+      <p>Du mardi au samedi<br>Services à 19 h 00 et 21 h 30<br><span class="muted">Fermé le dimanche et le lundi</span></p>
+    </div>
+    <div data-reveal style="--d:240ms">
+      <h2 class="foot-title">Explorer</h2>
+      <ul class="foot-links">
+        <li><a href="menu.html">Menu dégustation</a></li>
+        <li><a href="experience.html">L’expérience</a></li>
+        <li><a href="reservation.html">Réserver une table</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="container legal">Site fictif de démonstration réalisé pour un portfolio : Maison Obscura n’existe pas, aucune réservation n’est réellement enregistrée.</p>
+</footer>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/forms.js" defer></script>
+</body>
+</html>
