@@ -14,7 +14,6 @@
     if (lightBtn) {
       var label = $('.tool-label', lightBtn);
       label.textContent = on ? label.dataset.on : label.dataset.off;
-      lightBtn.setAttribute('aria-pressed', String(on));
     }
     if (themeMeta) themeMeta.setAttribute('content', on ? '#f7efe1' : '#07060a');
   }
@@ -163,10 +162,9 @@
     else { audio.master.gain.cancelScheduledValues(t); audio.master.gain.linearRampToValueAtTime(0, t + .6); setTimeout(function () { audio.ctx.suspend(); }, 700); }
     var label = $('.tool-label', soundBtn);
     label.textContent = on ? label.dataset.on : label.dataset.off;
-    soundBtn.setAttribute('aria-pressed', String(on));
+    soundBtn.classList.toggle('is-on', on);
   }
   if (soundBtn) {
-    soundBtn.setAttribute('aria-pressed', 'false');
-    soundBtn.addEventListener('click', function () { setSound(soundBtn.getAttribute('aria-pressed') !== 'true'); });
+    soundBtn.addEventListener('click', function () { setSound(!soundBtn.classList.contains('is-on')); });
   }
 })();

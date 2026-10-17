@@ -75,9 +75,9 @@ h3 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); }
 .tool:hover { border-color: var(--accent); color: var(--accent-strong); }
 .tool-light { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .tool-light:hover { background: var(--accent-strong); color: var(--on-accent); }
-.tool[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.tool.is-on { border-color: var(--accent); color: var(--accent); }
 .son-off { opacity: 1; } .son-on { opacity: 0; }
-.tool[aria-pressed="true"] .son-on { opacity: 1; } .tool[aria-pressed="true"] .son-off { opacity: 0; }
+.tool.is-on .son-on { opacity: 1; } .tool.is-on .son-off { opacity: 0; }
 .tool-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .nav-toggle { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; background: transparent; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); cursor: pointer; }
